@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/btm_nav_home"/>
+    <item
+        android:id="@id/suggestion"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="@string/btm_nav_suggestions"/>
+    <item
+        android:id="@id/dashboard"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_show_chart_24"
+        android:title="@string/btm_nav_dashboard"/>
+    <item
+        android:id="@id/settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/btm_nav_settings"/>
+</menu>
