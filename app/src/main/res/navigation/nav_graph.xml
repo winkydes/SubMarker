@@ -25,9 +25,15 @@
     </fragment>
     <fragment
         android:id="@+id/settings"
-        android:name="com.example.submarker.SettingsFragment"
+        android:name="com.example.submarker.AddSubscriptionFragment"
         android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings">
+    </fragment>
+    <fragment
+        android:id="@+id/addSub"
+        android:name="com.example.submarker.AddSubscriptionFragment"
+        android:label="@string/add_sub_fragment_label"
+        tools:layout="@layout/fragment_add_subscription">
     </fragment>
 
 </navigation>

@@ -9,6 +9,12 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_chat_24"
         android:title="@string/btm_nav_suggestions"/>
+
+    <item
+        android:id="@id/addSub"
+        android:enabled="true"
+        android:title="@string/add_sub_fragment_label" />
+
     <item
         android:id="@id/dashboard"
         android:enabled="true"
