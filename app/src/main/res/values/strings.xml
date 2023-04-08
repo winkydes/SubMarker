@@ -6,7 +6,7 @@
     <string name="suggestion_fragment_label">Suggestion</string>
     <string name="dashboard_fragment_label">Dashboard</string>
     <string name="settings_fragment_label">Settings</string>
-    <string name="add_sub_fragment_label">Add Subscriptions</string>
+    <string name="add_sub_activity_label">Add Subscriptions</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

@@ -12,6 +12,15 @@
         android:theme="@style/Theme.SubMarker"
         tools:targetApi="31">
         <activity
+            android:name=".AddSubscriptionActivity"
+            android:exported="false"
+            android:label="@string/add_sub_activity_label"
+            android:theme="@style/Theme.SubMarker.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

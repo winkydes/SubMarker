@@ -1,5 +1,6 @@
 package com.example.submarker
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -37,12 +38,10 @@ class MainActivity : AppCompatActivity() {
         bottomNavBar.background = null
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { view ->
-            val mainFragment = AddSubscriptionFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment_content_main, mainFragment)
-                .commit()
+            val intent = Intent(this, AddSubscriptionActivity::class.java)
+            // start your next activity
+            startActivity(intent)
         }
-//        bottomNavBar.menu.getItem(2).isEnabled = false
     }
 
     override fun onSupportNavigateUp(): Boolean {
