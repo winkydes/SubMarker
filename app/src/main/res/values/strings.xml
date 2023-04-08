@@ -17,6 +17,17 @@
     <string name="btm_nav_suggestions">Suggestions</string>
     <string name="btm_nav_dashboard">Dashboard</string>
     <string name="btm_nav_settings">Settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <!--Strings for Add Subsciption activity-->
+    <string name="tv_category">Which category does your subscription belong to?</string>
+
+    <string-array name="categories">
+        <item>Video Streaming</item>
+        <item>Music Streaming</item>
+        <item>Bills</item>
+        <item>Healthcare</item>
+        <item>Others</item>
+    </string-array>
 </resources>
