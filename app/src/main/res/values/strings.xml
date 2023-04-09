@@ -20,8 +20,11 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     
-    <!--Strings for Add Subsciption activity-->
+    <!--Strings for Add Subscription activity-->
     <string name="tv_category">Which category does your subscription belong to?</string>
+    <string name="tv_name">Name of your subscription</string>
+    <string name="tv_period">Pay per</string>
+    <string name="tv_on">On</string>
 
     <string-array name="categories">
         <item>Video Streaming</item>
@@ -29,5 +32,10 @@
         <item>Bills</item>
         <item>Healthcare</item>
         <item>Others</item>
+    </string-array>
+
+    <string-array name="period">
+        <item>Month</item>
+        <item>Year</item>
     </string-array>
 </resources>

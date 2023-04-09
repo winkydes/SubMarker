@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <stroke android:width="0dp" android:color="#80FFFFFF" />
-    <solid android:color="@color/colorPopupBackground"/>
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item>
+                <shape xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:shape="rectangle">
+                    <corners android:radius="7dp"/>
+                    <stroke android:width="0dp" android:color="#80FFFFFF" />
+                    <solid android:color="@color/colorPopupBackground"/>
+                </shape>
+            </item>
+            <item
+                android:drawable="@drawable/ic_baseline_arrow_drop_down_24"
+                android:gravity="end"/>
+        </layer-list>
+    </item>
+</selector>

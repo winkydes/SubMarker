@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.example.submarker.HomeFragment"
+        android:name="com.example.submarker.fragments.HomeFragment"
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
     </fragment>
     <fragment
         android:id="@+id/suggestion"
-        android:name="com.example.submarker.SuggestionFragment"
+        android:name="com.example.submarker.fragments.SuggestionFragment"
         android:label="@string/suggestion_fragment_label"
         tools:layout="@layout/fragment_suggestion">
     </fragment>
     <fragment
         android:id="@+id/dashboard"
-        android:name="com.example.submarker.DashboardFragment"
+        android:name="com.example.submarker.fragments.DashboardFragment"
         android:label="@string/dashboard_fragment_label"
         tools:layout="@layout/fragment_dashboard">
     </fragment>
     <fragment
         android:id="@+id/settings"
-        android:name="com.example.submarker.SettingsFragment"
+        android:name="com.example.submarker.fragments.SettingsFragment"
         android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings">
     </fragment>
