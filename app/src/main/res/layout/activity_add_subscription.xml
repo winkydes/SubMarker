@@ -125,7 +125,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/tv_payment_date"
+        android:id="@+id/tv_on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tv_on"
@@ -133,6 +133,38 @@
         android:layout_margin="@dimen/common_margin"
         app:layout_constraintTop_toBottomOf="@id/cl_period_field"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_payment_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_date_picker"
+        app:layout_constraintTop_toTopOf="@id/btn_date_picker"
+        app:layout_constraintBottom_toBottomOf="@id/btn_date_picker"/>
+
+    <Button
+        android:id="@+id/btn_date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_time"
+        app:layout_constraintTop_toBottomOf="@id/tv_on"
+        app:layout_constraintStart_toEndOf="@id/tv_payment_date"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_margin"
+        android:text="@string/submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
 
 
 
