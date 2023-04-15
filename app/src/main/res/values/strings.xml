@@ -25,6 +25,7 @@
     <string name="tv_name">Name of your subscription</string>
     <string name="tv_period">Pay per</string>
     <string name="tv_on">On Every</string>
+    <string name="tv_price">Price</string>
     <string name="pick_time">Pick A Date</string>
     <string name="submit">Submit!</string>
 

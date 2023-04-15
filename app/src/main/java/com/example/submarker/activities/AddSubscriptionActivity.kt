@@ -57,13 +57,18 @@ class AddSubscriptionActivity : AppCompatActivity() {
 
         val btnSubmit = findViewById<Button>(R.id.btn_submit)
         btnSubmit.setOnClickListener {view ->
+            if (findViewById<EditText>(R.id.et_name).text.toString().isEmpty() || findViewById<EditText>(R.id.et_price).text.toString().isEmpty()) {
+                Toast.makeText(this@AddSubscriptionActivity, "Some fields are still missing!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val subscription = hashMapOf<String, Any>(
                 "userID" to "underDevelopment",
                 "category" to categorySpinner.selectedItem.toString(),
                 "name" to findViewById<EditText>(R.id.et_name).text.toString(),
                 "period" to findViewById<EditText>(R.id.et_period).text.toString(),
                 "periodType" to periodSpinner.selectedItem.toString(),
-                "paymentDate" to findViewById<TextView>(R.id.tv_payment_date).text.toString()
+                "paymentDate" to findViewById<TextView>(R.id.tv_payment_date).text.toString(),
+                "price" to findViewById<EditText>(R.id.et_price).text.toString()
             )
             db.collection("subscriptions").add(subscription)
             onBackPressedDispatcher.onBackPressed()
