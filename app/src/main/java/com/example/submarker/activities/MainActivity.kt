@@ -1,5 +1,6 @@
 package com.example.submarker.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -26,11 +27,27 @@ class MainActivity : AppCompatActivity() {
     val db = Firebase.firestore
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private var subscriptionList: ArrayList<Subscription> = ArrayList()
-    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // retrieve or create unique UUID
+        val sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE) ?: return
+        val userId = sharedPref.getString("UUID", "")
+        // create UUID
+        if (userId == null || userId.isEmpty()) {
+            Log.d("TAG", "creating UUID")
+            val deviceModelBody = hashMapOf<String, String>(
+                "device_model" to android.os.Build.MODEL
+            )
+            db.collection("UUID").add(deviceModelBody).addOnSuccessListener { documentReference ->
+                with (sharedPref.edit()) {
+                    putString("UUID",documentReference.id)
+                    apply()
+                }
+            }
+
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

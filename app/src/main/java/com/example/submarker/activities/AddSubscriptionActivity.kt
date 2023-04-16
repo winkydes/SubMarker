@@ -1,5 +1,6 @@
 package com.example.submarker.activities
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -61,8 +62,10 @@ class AddSubscriptionActivity : AppCompatActivity() {
                 Toast.makeText(this@AddSubscriptionActivity, "Some fields are still missing!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            val sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE) ?: null
+            val userId = sharedPref?.getString("UUID", "") ?:""
             val subscription = hashMapOf<String, Any>(
-                "userID" to "underDevelopment",
+                "userID" to userId,
                 "category" to categorySpinner.selectedItem.toString(),
                 "name" to findViewById<EditText>(R.id.et_name).text.toString(),
                 "period" to findViewById<EditText>(R.id.et_period).text.toString(),

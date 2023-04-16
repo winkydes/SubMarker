@@ -1,5 +1,6 @@
 package com.example.submarker.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -55,7 +56,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadSubscriptions() {
-        db.collection("subscriptions").get().addOnSuccessListener { documents ->
+        val sharedPref =
+            this.activity?.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+        val userId = sharedPref?.getString("UUID", "") ?:""
+        db.collection("subscriptions").whereEqualTo("userID", userId).get().addOnSuccessListener { documents ->
             try {
                 subscriptionList.clear()
                 for (document in documents) {
