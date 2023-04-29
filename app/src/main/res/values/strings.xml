@@ -31,6 +31,9 @@
 
     <string name="days_left">days left</string>
 
+    <!--Strings for setting page-->
+    <string name="data_retrieval">Retrieve your data</string>
+
     <!--Shared Preference String-->
     <string name="preference_file_key">SubMarker</string>
 
