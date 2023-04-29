@@ -13,6 +13,17 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+    private lateinit var periodType: String;
+
+    companion object {
+        fun newInstance(value: String): DatePickerFragment {
+            val fragment = DatePickerFragment()
+            val args = Bundle()
+            args.putString("periodType", value)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Use the current date as the default date in the picker
@@ -21,13 +32,20 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
+        periodType = arguments?.getString("periodType").toString()
+
         // Create a new instance of DatePickerDialog and return it
         return DatePickerDialog(requireContext(), this, year, month, day)
     }
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        val dateString = "$day/${month + 1}"
-        Log.v("TAG", dateString)
+        var dateString = ""
+        Log.d("TAG", periodType)
+        if (periodType.equals("Month")) {
+            dateString = "$day"
+        }else if (periodType.equals("Year")) {
+            dateString = "${day.toString().padStart(2,'0')}/${(month + 1).toString().padStart(2,'0')}"
+        }
         val mActivity:AddSubscriptionActivity = activity as AddSubscriptionActivity
         mActivity.onDateSet(dateString)
     }

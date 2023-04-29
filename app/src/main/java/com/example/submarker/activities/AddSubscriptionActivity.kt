@@ -3,6 +3,7 @@ package com.example.submarker.activities
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.submarker.R
@@ -11,6 +12,8 @@ import com.example.submarker.dialogFragment.DatePickerFragment
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalTime
 
 class AddSubscriptionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddSubscriptionBinding
@@ -25,10 +28,8 @@ class AddSubscriptionActivity : AppCompatActivity() {
 
         // textview setup
         tvPaymentDate = findViewById(R.id.tv_payment_date)
-        val date = System.currentTimeMillis()
-        val sdf = SimpleDateFormat("dd/MM")
-        val dateString: String = sdf.format(date)
-        tvPaymentDate.text = dateString
+        val date = LocalDate.now().dayOfMonth.toString()
+        tvPaymentDate.text = date
 
         // setup page spinner
         val categories = resources.getStringArray(R.array.categories)
@@ -48,12 +49,28 @@ class AddSubscriptionActivity : AppCompatActivity() {
                 R.layout.spinner_item, period
             )
             periodSpinner.adapter = adapter
+            periodSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    if (parent?.selectedItemPosition == 0)
+                        tvPaymentDate.text = LocalDate.now().dayOfMonth.toString()
+                    else {
+                        val sdf = SimpleDateFormat("dd/MM")
+                        val dateString: String = sdf.format(System.currentTimeMillis())
+                        tvPaymentDate.text = dateString
+                    }
+                }
+
+            }
         }
 
         // setup onClickListener
         val btnDatePicker = findViewById<Button>(R.id.btn_date_picker)
         btnDatePicker.setOnClickListener {view ->
-            DatePickerFragment().show(supportFragmentManager, "datePicker")
+            val datePicker = DatePickerFragment.newInstance(periodSpinner.selectedItem.toString())
+            datePicker.show(supportFragmentManager, "datePicker")
         }
 
         val btnSubmit = findViewById<Button>(R.id.btn_submit)
@@ -64,13 +81,17 @@ class AddSubscriptionActivity : AppCompatActivity() {
             }
             val sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE) ?: null
             val userId = sharedPref?.getString("UUID", "") ?:""
+            var paymentDate = findViewById<TextView>(R.id.tv_payment_date).text.toString()
+            if (periodSpinner.selectedItem.toString() == "Month") {
+                paymentDate = paymentDate.substringBefore('/')
+            }
             val subscription = hashMapOf<String, Any>(
                 "userID" to userId,
                 "category" to categorySpinner.selectedItem.toString(),
                 "name" to findViewById<EditText>(R.id.et_name).text.toString(),
                 "period" to findViewById<EditText>(R.id.et_period).text.toString(),
                 "periodType" to periodSpinner.selectedItem.toString(),
-                "paymentDate" to findViewById<TextView>(R.id.tv_payment_date).text.toString(),
+                "paymentDate" to paymentDate,
                 "price" to findViewById<EditText>(R.id.et_price).text.toString()
             )
             db.collection("subscriptions").add(subscription)

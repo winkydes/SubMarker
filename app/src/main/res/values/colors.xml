@@ -10,4 +10,6 @@
 
     <color name="colorPopupBackground">#FFe3e3de</color>
 
+    <color name="cardColor">#FFe3e3de</color>
+
 </resources>

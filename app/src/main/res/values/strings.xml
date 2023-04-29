@@ -29,6 +29,8 @@
     <string name="pick_time">Pick A Date</string>
     <string name="submit">Submit!</string>
 
+    <string name="days_left">days left</string>
+
     <!--Shared Preference String-->
     <string name="preference_file_key">SubMarker</string>
 
