@@ -1,11 +1,15 @@
 package com.example.submarker.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.submarker.SettingsItem
+import com.example.submarker.activities.DataRetrievalActivity
 import com.example.submarker.databinding.FragmentSettingsBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -25,8 +29,13 @@ class SettingsFragment : Fragment() {
     ): View? {
         (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        return binding.root
+        val dataRetrievalSetting: SettingsItem = _binding!!.settingsRetrieveData
+        dataRetrievalSetting.setOnClickListener{view ->
+            val intent = Intent(activity, DataRetrievalActivity::class.java)
+            startActivity(intent)
+        }
 
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

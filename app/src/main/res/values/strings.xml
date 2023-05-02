@@ -19,7 +19,7 @@
     <string name="btm_nav_settings">Settings</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
     <!--Strings for Add Subscription activity-->
     <string name="tv_category">Which category does your subscription belong to?</string>
     <string name="tv_name">Name of your subscription</string>
@@ -33,6 +33,10 @@
 
     <!--Strings for setting page-->
     <string name="data_retrieval">Retrieve your data</string>
+    <string name="your_current_id">Your Current ID</string>
+    <string name="restore_id">Restoring Your ID</string>
+    <string name="old_id">Old ID</string>
+    <string name="connect">Connect</string>
 
     <!--Shared Preference String-->
     <string name="preference_file_key">SubMarker</string>
