@@ -28,14 +28,14 @@ class DataRetrievalActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Data Retrieval"
 
-        tvCurrentId = findViewById(R.id.tv_current_id)
+        tvCurrentId = binding.tvCurrentId
 
         val sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE) ?: return
         val userId = sharedPref.getString("UUID", "")
         tvCurrentId.text = userId
 
-        etOldId = findViewById(R.id.et_old_id)
-        btnConnect = findViewById(R.id.btn_connect)
+        etOldId = binding.etOldId
+        btnConnect = binding.btnConnect
         btnConnect.setOnClickListener{ view ->
             if (etOldId.text.toString().isEmpty()) {
                 Toast.makeText(this@DataRetrievalActivity, "Old ID cannot be blank!", Toast.LENGTH_SHORT).show()

@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
         if (userId == null || userId.isEmpty()) {
             Log.d("TAG", "creating UUID")
             val deviceModelBody = hashMapOf<String, String>(
-                "device_model" to android.os.Build.MODEL
+                "device_model" to android.os.Build.MODEL,
+                "notif_time" to "12:00"
             )
             db.collection("UUID").add(deviceModelBody).addOnSuccessListener { documentReference ->
                 with (sharedPref.edit()) {

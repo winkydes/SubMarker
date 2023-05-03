@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.submarker.SettingsItem
 import com.example.submarker.activities.DataRetrievalActivity
+import com.example.submarker.activities.NotificationSettingsActivity
 import com.example.submarker.databinding.FragmentSettingsBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,9 +30,16 @@ class SettingsFragment : Fragment() {
     ): View? {
         (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+
         val dataRetrievalSetting: SettingsItem = _binding!!.settingsRetrieveData
-        dataRetrievalSetting.setOnClickListener{view ->
+        dataRetrievalSetting.setOnClickListener{
             val intent = Intent(activity, DataRetrievalActivity::class.java)
+            startActivity(intent)
+        }
+
+        val notificationSetting: SettingsItem = _binding!!.settingsNotification
+        notificationSetting.setOnClickListener{
+            val intent = Intent(activity, NotificationSettingsActivity::class.java)
             startActivity(intent)
         }
 
