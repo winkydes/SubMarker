@@ -3,6 +3,7 @@ package com.example.submarker.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.submarker.R
@@ -18,10 +19,23 @@ class SubscriptionAdapter(private val dataSet: ArrayList<Subscription>) :
         private val tvSubName: TextView = itemView.findViewById(R.id.tv_subscription_name)
         private val tvCategory: TextView = itemView.findViewById(R.id.tv_category)
         private val tvDaysLeft: TextView = itemView.findViewById(R.id.tv_days_left)
+        private val ivImageView: ImageView = itemView.findViewById(R.id.imageView)
+        private val tvPrice: TextView = itemView.findViewById(R.id.tv_price)
+        private val tvPeriod: TextView = itemView.findViewById(R.id.tv_period)
 
         fun bind(subscription: Subscription) {
             tvSubName.text = subscription.name
             tvCategory.text = subscription.category
+            tvPrice.text = "$" + subscription.price
+            tvPeriod.text = "per " + subscription.periodType
+
+            when (subscription.category) {
+                "Video Streaming" -> ivImageView.setImageResource(R.drawable.ic_baseline_movie_filter_24)
+                "Music Streaming" -> ivImageView.setImageResource(R.drawable.ic_baseline_headphones_24)
+                "Bills" -> ivImageView.setImageResource(R.drawable.ic_baseline_receipt_long_24)
+                "Healthcare" -> ivImageView.setImageResource(R.drawable.ic_baseline_health_and_safety_24)
+                else -> ivImageView.setImageResource(R.drawable.ic_baseline_article_24)
+            }
             if (subscription.periodType == "Month") {
                 val today = LocalDate.now()
                 val thisMonth = today.withDayOfMonth(Integer.parseInt(subscription.paymentDate))
