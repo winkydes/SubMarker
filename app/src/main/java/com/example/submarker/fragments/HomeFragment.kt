@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         loadSubscriptions()
         recyclerView = binding.subRecyclerView
         recyclerView.adapter = SubscriptionAdapter(subscriptionList)
-        recyclerView.layoutManager = LinearLayoutManager(context);
+        recyclerView.layoutManager = LinearLayoutManager(context)
     }
 
     override fun onDestroyView() {
