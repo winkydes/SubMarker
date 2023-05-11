@@ -46,7 +46,7 @@ class SubscriptionAdapter(private val dataSet: ArrayList<Subscription>) :
                 }
                 tvDaysLeft.text = ChronoUnit.DAYS.between(today, nextMonth).toString()
             } else if (subscription.periodType == "Year") {
-                val paymentStr = subscription.paymentDate + "/2023"
+                val paymentStr = subscription.paymentDate + "/" + LocalDate.now().year.toString()
                 val date = LocalDate.parse(paymentStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                 val today = LocalDate.now()
                 val thisYear = today.withMonth(date.monthValue).withDayOfMonth(date.dayOfMonth)
