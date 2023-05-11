@@ -43,6 +43,9 @@ class DashboardFragment : Fragment() {
     private var healthcareYearPayment: Float = 0f
     private var othersYearPayment: Float = 0f
 
+    private lateinit var tvYourExpenses: TextView
+    private lateinit var tvTotal: TextView
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -58,7 +61,6 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("TAG", "onViewCreated")
 
         pbVideoStreaming = binding.pbVideoStreaming
         pbMusicStreaming = binding.pbMusicStreaming
@@ -72,17 +74,23 @@ class DashboardFragment : Fragment() {
         tvHealthcare = binding.tvHealthcare
         tvOthers = binding.tvOthers
 
+        tvYourExpenses = binding.tvYourExpenses
+        tvTotal = binding.tvTotal
+
+        // set onClickListener for buttons to change display type
         val btnMonth = binding.btnMonth
         val btnYear = binding.btnYear
 
         btnMonth.setOnClickListener {
-            changePeriodType(videoMonthPayment, musicMonthPayment, billsMonthPayment, healthcareMonthPayment, othersMonthPayment)
+            changePeriodType("Month", videoMonthPayment, musicMonthPayment, billsMonthPayment, healthcareMonthPayment, othersMonthPayment)
         }
 
         btnYear.setOnClickListener{
-            changePeriodType(videoYearPayment, musicYearPayment, billsYearPayment, healthcareYearPayment, othersYearPayment)
+            changePeriodType("Year", videoYearPayment, musicYearPayment, billsYearPayment, healthcareYearPayment, othersYearPayment)
         }
 
+
+        // fetch data from db and process them for displaying
         val sharedPref =
             this.activity?.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         val userId = sharedPref?.getString("UUID", "") ?:""
@@ -167,8 +175,8 @@ class DashboardFragment : Fragment() {
                         }
                     }
                 }
-
-                changePeriodType(videoMonthPayment, musicMonthPayment, billsMonthPayment, healthcareMonthPayment, othersMonthPayment)
+                // by default, the app will show the monthly expenses
+                changePeriodType("Month", videoMonthPayment, musicMonthPayment, billsMonthPayment, healthcareMonthPayment, othersMonthPayment)
 
             } catch (ex: Exception) {
                 ex.message?.let { Log.e("TAG", it) }
@@ -181,8 +189,11 @@ class DashboardFragment : Fragment() {
         _binding = null
     }
 
-    private fun changePeriodType(videoPayment: Float, musicPayment: Float, billsPayment: Float, healthcarePayment: Float, othersPayment: Float) {
+    // function to change the displaying information in dashboard
+    private fun changePeriodType(type: String, videoPayment: Float, musicPayment: Float, billsPayment: Float, healthcarePayment: Float, othersPayment: Float) {
+        tvYourExpenses.text = "Your ${type}ly Expenses"
         val totalPayment = videoPayment + musicPayment + billsPayment + healthcarePayment + othersPayment
+        tvTotal.text = "Total: ${totalPayment}/${type}"
         pbVideoStreaming.progress = 100
         pbMusicStreaming.progress =
             ((musicPayment + billsPayment + healthcarePayment + othersPayment) / totalPayment * 100).roundToInt()
