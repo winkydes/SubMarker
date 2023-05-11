@@ -1,10 +1,15 @@
 package com.example.submarker.adapters
 
+import android.content.res.Resources
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.submarker.R
 import com.example.submarker.data.Subscription
@@ -22,6 +27,8 @@ class SubscriptionAdapter(private val dataSet: ArrayList<Subscription>) :
         private val ivImageView: ImageView = itemView.findViewById(R.id.imageView)
         private val tvPrice: TextView = itemView.findViewById(R.id.tv_price)
         private val tvPeriod: TextView = itemView.findViewById(R.id.tv_period)
+
+        private val cardView: CardView = itemView.findViewById(R.id.card_view)
 
         fun bind(subscription: Subscription) {
             tvSubName.text = subscription.name
@@ -56,6 +63,12 @@ class SubscriptionAdapter(private val dataSet: ArrayList<Subscription>) :
                     thisYear
                 }
                 tvDaysLeft.text = ChronoUnit.DAYS.between(today, nextYear).toString()
+            }
+
+            when (Integer.parseInt(tvDaysLeft.text.toString())) {
+                in 0..5 -> cardView.setBackgroundResource(R.drawable.background_card_urgent)
+                in 6..15 -> cardView.setBackgroundResource(R.drawable.background_card_normal)
+                else -> cardView.setBackgroundResource(R.drawable.background_card)
             }
         }
     }

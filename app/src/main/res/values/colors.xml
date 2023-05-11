@@ -10,7 +10,9 @@
 
     <color name="colorPopupBackground">#FFe3e3de</color>
 
-    <color name="cardColor">#FFe3e3de</color>
+    <color name="cardColor">#FF87d1ff</color>
+    <color name="cardColorNormal">#FFfcda95</color>
+    <color name="cardColorUrgent">#FFff908c</color>
 
     <color name="pb_video_streaming">#FF4287f5</color>
     <color name="pb_music_streaming">#FF42f563</color>

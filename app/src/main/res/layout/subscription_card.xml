@@ -6,14 +6,13 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="15dp"
     android:layout_marginVertical="@dimen/recycler_view_margin"
-    android:padding="@dimen/common_padding"
-    app:cardBackgroundColor="@color/cardColor"
     app:cardCornerRadius="@dimen/common_margin"
     app:cardElevation="5dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/card_padding">
 
             <LinearLayout
                 android:layout_width="65dp"

@@ -18,7 +18,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
-    val db = Firebase.firestore
+    private val db = Firebase.firestore
     private var _binding: FragmentHomeBinding? = null
     private lateinit var recyclerView: RecyclerView
     private var subscriptionList: ArrayList<Subscription> = ArrayList()
@@ -69,7 +69,6 @@ class HomeFragment : Fragment() {
                 recyclerView.adapter?.run {
                     notifyDataSetChanged()
                 }
-                Log.d("TAG", recyclerView.adapter?.itemCount.toString())
             } catch (ex: Exception) {
                 ex.message?.let { Log.e("TAG", it) }
             }
