@@ -12,4 +12,10 @@
 
     <color name="cardColor">#FFe3e3de</color>
 
+    <color name="pb_video_streaming">#FF4287f5</color>
+    <color name="pb_music_streaming">#FF42f563</color>
+    <color name="pb_bills">#FFe0f542</color>
+    <color name="pb_healthcare">#FFf71e49</color>
+    <color name="pb_others">#FFba1ef7</color>
+
 </resources>
