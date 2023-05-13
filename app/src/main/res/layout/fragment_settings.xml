@@ -24,5 +24,14 @@
         app:iconSrc="@drawable/ic_baseline_edit_notifications_24"
         app:settingsName="@string/notification_settings"/>
 
+    <com.example.submarker.SettingsItem
+        android:id="@+id/settings_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/settings_notification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:iconSrc="@drawable/ic_baseline_bug_report_24"
+        app:settingsName="@string/bug_report"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

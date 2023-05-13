@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.submarker.SettingsItem
+import com.example.submarker.activities.BugReportActivity
 import com.example.submarker.activities.DataRetrievalActivity
 import com.example.submarker.activities.NotificationSettingsActivity
 import com.example.submarker.databinding.FragmentSettingsBinding
@@ -40,6 +41,12 @@ class SettingsFragment : Fragment() {
         val notificationSetting: SettingsItem = _binding!!.settingsNotification
         notificationSetting.setOnClickListener{
             val intent = Intent(activity, NotificationSettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        val reportBugSetting: SettingsItem = _binding!!.settingsReport
+        reportBugSetting.setOnClickListener{
+            val intent = Intent(activity, BugReportActivity::class.java)
             startActivity(intent)
         }
 

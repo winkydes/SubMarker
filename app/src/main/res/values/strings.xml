@@ -42,6 +42,8 @@
     <string name="tv_let_us_know_preference">Let us know what time do you want to receive your notifications!</string>
     <string name="btn_save">Save</string>
 
+    <string name="bug_report">Report Bugs</string>
+
     <!--Shared Preference String-->
     <string name="preference_file_key">SubMarker</string>
 
@@ -65,4 +67,5 @@
     <string name="year">Year</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="tv_bug_report">Please let us know more about the problem you are facing.</string>
 </resources>

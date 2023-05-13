@@ -9,9 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.submarker.databinding.FragmentSuggestionBinding
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class SuggestionFragment : Fragment() {
 
     private var _binding: FragmentSuggestionBinding? = null
