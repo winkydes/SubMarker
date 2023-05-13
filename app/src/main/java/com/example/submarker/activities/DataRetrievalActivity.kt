@@ -1,19 +1,19 @@
 package com.example.submarker.activities
 
+import android.R.attr.label
 import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.submarker.R
 import com.example.submarker.databinding.ActivityDataRetrievalBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 class DataRetrievalActivity : AppCompatActivity() {
     val db = Firebase.firestore
@@ -76,6 +76,15 @@ class DataRetrievalActivity : AppCompatActivity() {
                 }
             }
 
+        }
+
+        val ivCopy: ImageView = binding.ivCopy
+        ivCopy.setOnClickListener {
+            val clipboard: ClipboardManager =
+                getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("user id", userId)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this@DataRetrievalActivity, "Copied to clipboard", Toast.LENGTH_SHORT).show()
         }
     }
 
