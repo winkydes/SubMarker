@@ -50,7 +50,7 @@ class NotificationSettingsActivity : AppCompatActivity() {
             minute = p2
         }
 
-        mBtnSave.setOnClickListener{ view ->
+        mBtnSave.setOnClickListener {
             if (userId != null) {
                 db.collection("UUID").document(userId).update("notif_time", "$hour:$minute").addOnCompleteListener{result ->
                     if (result.isSuccessful) {

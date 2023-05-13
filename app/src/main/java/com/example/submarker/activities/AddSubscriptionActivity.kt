@@ -97,7 +97,6 @@ class AddSubscriptionActivity : AppCompatActivity() {
                 "userID" to userId,
                 "category" to categorySpinner.selectedItem.toString(),
                 "name" to binding.etName.text.toString(),
-                "period" to binding.etPeriod.text.toString(),
                 "periodType" to periodSpinner.selectedItem.toString(),
                 "paymentDate" to paymentDate,
                 "price" to binding.etPrice.text.toString()
@@ -155,7 +154,7 @@ class AddSubscriptionActivity : AppCompatActivity() {
         }
     }
 
-    public fun changeInfo(name: String, price: String, period: String) {
+    private fun changeInfo(name: String, price: String) {
         binding.etName.setText(name)
         binding.etPrice.setText(price)
     }

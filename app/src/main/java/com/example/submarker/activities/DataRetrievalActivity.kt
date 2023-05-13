@@ -36,7 +36,7 @@ class DataRetrievalActivity : AppCompatActivity() {
 
         etOldId = binding.etOldId
         btnConnect = binding.btnConnect
-        btnConnect.setOnClickListener{ view ->
+        btnConnect.setOnClickListener{
             if (etOldId.text.toString().isEmpty()) {
                 Toast.makeText(this@DataRetrievalActivity, "Old ID cannot be blank!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
