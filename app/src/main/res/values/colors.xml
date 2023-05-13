@@ -14,6 +14,8 @@
     <color name="cardColorNormal">#FFfcda95</color>
     <color name="cardColorUrgent">#FFff908c</color>
 
+    <color name="dialogTextButton">#FF6200EE</color>
+
     <color name="pb_video_streaming">#FF4287f5</color>
     <color name="pb_music_streaming">#FF42f563</color>
     <color name="pb_bills">#FFe0f542</color>

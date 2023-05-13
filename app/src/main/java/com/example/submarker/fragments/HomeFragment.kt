@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         // setup recycler view
         loadSubscriptions()
         recyclerView = binding.subRecyclerView
-        recyclerView.adapter = SubscriptionAdapter(subscriptionList)
+        recyclerView.adapter = context?.let { SubscriptionAdapter(subscriptionList, it) }
         recyclerView.layoutManager = LinearLayoutManager(context)
     }
 

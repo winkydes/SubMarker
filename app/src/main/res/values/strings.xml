@@ -63,4 +63,6 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="month">Month</string>
     <string name="year">Year</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>

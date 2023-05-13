@@ -2,6 +2,8 @@ package com.example.submarker.activities
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,6 +21,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AddSubscriptionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddSubscriptionBinding
@@ -122,21 +126,14 @@ class AddSubscriptionActivity : AppCompatActivity() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
         dialog.setContentView(R.layout.dialog_possible_name)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         recyclerView = dialog.findViewById(R.id.rv_possible_name)
         loadNames()
         recyclerView.adapter = SuggestedSubscriptionAdapter(suggestedSubscriptionList, ::changeInfo, dialog)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-//        val body = dialog.findViewById(R.id.body) as TextView
-//        body.text = title
-//        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
-//        val noBtn = dialog.findViewById(R.id.noBtn) as Button
-//        yesBtn.setOnClickListener {
-//            dialog.dismiss()
-//        }
-//        noBtn.setOnClickListener {
-//            dialog.dismiss()
-//        }
+        val tvPossibleName: TextView = dialog.findViewById(R.id.tv_possible_name)
+        tvPossibleName.text = "These are popular ${categorySpinner.selectedItem.toString().lowercase(Locale.getDefault())} subscriptions"
         dialog.show()
     }
 
