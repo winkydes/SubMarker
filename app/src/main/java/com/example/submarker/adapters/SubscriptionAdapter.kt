@@ -53,6 +53,8 @@ class SubscriptionAdapter(private val dataSet: ArrayList<Subscription>, private 
                 "Healthcare" -> ivImageView.setImageResource(R.drawable.ic_baseline_health_and_safety_24)
                 else -> ivImageView.setImageResource(R.drawable.ic_baseline_article_24)
             }
+
+            // days left till payment calculation
             if (subscription.periodType == "Month") {
                 val today = LocalDate.now()
                 val thisMonth = today.withDayOfMonth(Integer.parseInt(subscription.paymentDate))
