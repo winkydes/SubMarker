@@ -193,6 +193,15 @@ class DashboardFragment : Fragment() {
     private fun changePeriodType(type: String, videoPayment: Float, musicPayment: Float, billsPayment: Float, healthcarePayment: Float, othersPayment: Float) {
         tvYourExpenses.text = "Your ${type}ly Expenses"
         val totalPayment = videoPayment + musicPayment + billsPayment + healthcarePayment + othersPayment
+        if (totalPayment == 0f) {
+            tvTotal.text = "You have no record here yet..."
+            pbVideoStreaming.progress = 0
+            pbMusicStreaming.progress = 0
+            pbBills.progress = 0
+            pbHealthcare.progress = 0
+            pbOthers.progress = 0
+            return
+        }
         tvTotal.text = "Total: ${totalPayment}/${type}"
         pbVideoStreaming.progress = 100
         pbMusicStreaming.progress =

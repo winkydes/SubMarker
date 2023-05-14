@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -12,5 +13,31 @@
         android:paddingTop="@dimen/common_padding"
         android:layout_marginBottom="55dp"
         android:scrollbars="vertical"/>
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/common_margin"
+        android:text="You have not added any subscriptions yet, press the Add Button below to start!"
+        android:textAlignment="center"
+        android:textSize="@dimen/large_textSize"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_empty"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/large_margin"
+        android:visibility="gone"
+        android:src="@drawable/ic_baseline_arrow_downward_24"
+        app:layout_constraintTop_toBottomOf="@id/tv_empty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

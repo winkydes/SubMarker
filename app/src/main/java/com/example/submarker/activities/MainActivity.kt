@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {
             val intent = Intent(this, AddSubscriptionActivity::class.java)
-            // start your next activity
             startActivity(intent)
         }
     }

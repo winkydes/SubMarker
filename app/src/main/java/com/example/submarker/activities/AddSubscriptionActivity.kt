@@ -29,7 +29,9 @@ class AddSubscriptionActivity : AppCompatActivity() {
     private lateinit var tvPaymentDate: TextView
     private var suggestedSubscriptionList: ArrayList<SuggestedSubscription> = ArrayList()
     private lateinit var categorySpinner: Spinner
+    private lateinit var periodSpinner: Spinner
     private lateinit var recyclerView: RecyclerView
+    private lateinit var periodAdapter: ArrayAdapter<String>
     private val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +54,8 @@ class AddSubscriptionActivity : AppCompatActivity() {
         )
         categorySpinner.adapter = categoryAdapter
         val period = resources.getStringArray(R.array.period)
-        val periodSpinner = binding.spinnerPeriod
-        val periodAdapter = ArrayAdapter(
+        periodSpinner = binding.spinnerPeriod
+        periodAdapter = ArrayAdapter(
             this,
             R.layout.spinner_item, period
         )
@@ -109,6 +111,12 @@ class AddSubscriptionActivity : AppCompatActivity() {
         tvSearchButton.setOnClickListener {
             showPossibleNameDialog()
         }
+
+        val defaultSub = intent.getSerializableExtra("subscription") as? SuggestedSubscription
+        if (defaultSub != null) {
+            changeInfo(defaultSub.name, defaultSub.price.toString().substringBefore('.'), defaultSub.period)
+            categorySpinner.setSelection(categoryAdapter.getPosition(defaultSub.category))
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -154,8 +162,9 @@ class AddSubscriptionActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeInfo(name: String, price: String) {
+    private fun changeInfo(name: String, price: String, period: String) {
         binding.etName.setText(name)
         binding.etPrice.setText(price)
+        periodSpinner.setSelection(periodAdapter.getPosition(period))
     }
 }

@@ -2,24 +2,27 @@ package com.example.submarker.dialogFragment
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
-import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.submarker.R
 import com.example.submarker.activities.AddSubscriptionActivity
-import java.text.SimpleDateFormat
+import com.example.submarker.fragments.SuggestionFragment
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
-    private lateinit var periodType: String;
+    private lateinit var periodType: String
+    private lateinit var source: String
 
     companion object {
-        fun newInstance(value: String): DatePickerFragment {
+        fun newInstance(periodType: String): DatePickerFragment {
             val fragment = DatePickerFragment()
             val args = Bundle()
-            args.putString("periodType", value)
+            args.putString("periodType", periodType)
             fragment.arguments = args
             return fragment
         }
@@ -33,6 +36,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         periodType = arguments?.getString("periodType").toString()
+        source = arguments?.getString("source").toString()
 
         // Create a new instance of DatePickerDialog and return it
         return DatePickerDialog(requireContext(), this, year, month, day)
@@ -46,7 +50,8 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         }else if (periodType.equals("Year")) {
             dateString = "${day.toString().padStart(2,'0')}/${(month + 1).toString().padStart(2,'0')}"
         }
-        val mActivity:AddSubscriptionActivity = activity as AddSubscriptionActivity
+        val mActivity: AddSubscriptionActivity = activity as AddSubscriptionActivity
         mActivity.onDateSet(dateString)
+
     }
 }

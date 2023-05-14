@@ -1,6 +1,7 @@
 package com.example.submarker.fragments
 
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -65,6 +66,13 @@ class HomeFragment : Fragment() {
                 for (document in documents) {
                     val sub: Subscription = document.toObject(Subscription::class.java)
                     subscriptionList.add(sub)
+                }
+                if (subscriptionList.isEmpty()) {
+                    binding.tvEmpty.visibility = View.VISIBLE
+                    binding.ivEmpty.visibility = View.VISIBLE
+                } else {
+                    binding.tvEmpty.visibility = View.GONE
+                    binding.ivEmpty.visibility = View.GONE
                 }
                 recyclerView.adapter?.run {
                     notifyDataSetChanged()

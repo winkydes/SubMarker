@@ -4,15 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="80dp"
+    android:paddingTop="20dp"
     tools:context=".fragments.SuggestionFragment">
 
-    <TextView
-        android:id="@+id/textview_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_second_fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_suggestion1"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_margin="@dimen/large_margin"
+        android:padding="@dimen/common_padding"
+        android:background="@drawable/container_rounded"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cl_suggestion2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:id="@+id/tv_title1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Youtube Premium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_textSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/tv_description1"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/common_margin"
+            app:layout_constraintTop_toBottomOf="@id/tv_title1"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/tv_offer1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_textSize"
+            android:layout_marginTop="@dimen/common_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description1"/>
+        <Button
+            android:id="@+id/btn_add1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_suggestion2"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_margin="@dimen/large_margin"
+        android:padding="@dimen/common_padding"
+        android:background="@drawable/container_rounded"
+        app:layout_constraintTop_toBottomOf="@id/cl_suggestion1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Youtube Premium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_textSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/tv_description2"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/common_margin"
+            app:layout_constraintTop_toBottomOf="@id/tv_title2"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/tv_offer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_textSize"
+            android:layout_marginTop="@dimen/common_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description2"/>
+        <Button
+            android:id="@+id/btn_add2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
