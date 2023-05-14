@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         notif_time = "12:00"
-        if (userId != null) {
+        if (userId != null && userId != "") {
             db.collection("UUID").document(userId).get().addOnSuccessListener { documents ->
                 documents.getString("notif_time")?.let { notif_time = it }
             }
