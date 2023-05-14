@@ -1,12 +1,14 @@
 package com.example.submarker
 
 import android.R
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.submarker.activities.MainActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
@@ -41,6 +43,11 @@ class AlarmReceiver : BroadcastReceiver() {
 
     private fun pushNotification(context: Context) {
         Log.d("TAG", "Pushing Notif")
+        // Create an explicit intent for an Activity in your app
+        val intent = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
         val mBuilder: NotificationCompat.Builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_lock_idle_alarm)
             .setContentTitle("You have Subscription payment today!")
@@ -50,6 +57,7 @@ class AlarmReceiver : BroadcastReceiver() {
                     .bigText("Please come and check what you have to pay today!")
             )
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
             notify(0, mBuilder.build())
