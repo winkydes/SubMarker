@@ -1,17 +1,19 @@
 package com.example.submarker.activities
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings
 import android.widget.Button
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.submarker.R
-import com.example.submarker.databinding.ActivityDataRetrievalBinding
 import com.example.submarker.databinding.ActivityNotificationSettingsBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 class NotificationSettingsActivity : AppCompatActivity() {
     val db = Firebase.firestore
@@ -62,6 +64,13 @@ class NotificationSettingsActivity : AppCompatActivity() {
                 }
             }
             //TODO: update alarm schedule here
+        }
+
+        binding.clNotifPermission.setOnClickListener{
+            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            val uri: Uri = Uri.fromParts("package", packageName, null)
+            intent.data = uri
+            startActivity(intent)
         }
     }
 

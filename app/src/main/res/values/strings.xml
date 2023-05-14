@@ -69,4 +69,5 @@
     <string name="edit">Edit</string>
     <string name="tv_bug_report">Please let us know more about the problem you are facing.</string>
     <string name="add">Add</string>
+    <string name="notification_permissions">Notification Permissions</string>
 </resources>
